@@ -14,6 +14,9 @@ let mainReducer = (state = initialState, action) => {
     if(action.type === 'DECREMENT_LIKE') {
         return { ...state, totalLikes: state.totalLikes - 1}
     }
+    if(action.type === 'INCREMENT_BY_FIFTY') {
+        return { ...state, totalLikes: state.totalLikes + action.incVal}
+    }
     return state;
 }
 
@@ -28,5 +31,5 @@ globalStore.subscribe(() => {
 
 // Action Dispatch
 globalStore.dispatch({type: 'INCREMENT_LIKE'})
-globalStore.dispatch({type: 'INCREMENT_LIKE'})
-globalStore.dispatch({type: 'DECREMENT_LIKE'})
+globalStore.dispatch({type: 'DECREMENT_LIKE'});
+globalStore.dispatch({type: 'INCREMENT_BY_FIFTY', incVal: 29});

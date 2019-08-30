@@ -1,8 +1,11 @@
 import React from 'react';
 
-let Loader = () => {
+let Loader = (props) => {
     return(
+        props.loading?
         <h1>Loading...</h1>
+        :
+        props.children
     )
 }
 

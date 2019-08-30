@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import {Link} from 'react-router-dom';
 
@@ -11,9 +12,17 @@ let Topbar = (props) => {
             <Link to={'/'}>Home</Link>
             <Link to={LOGIN_PAGE_URL}>Login</Link>
             <Link to={ABOUT_PAGE_URL}>About</Link>
-            <p>Total Likes: {props.totalLikes}</p>
+            <p>Total Likes: {props.topbarTotLikes}</p>
+            <p>Total Dislikes: {props.topbarTotDislikes}</p>
         </div>
     )
 }
 
-export default Topbar;
+let mapGlobalStatetoProps = (globalState) => {
+    return {
+        topbarTotLikes: globalState.likes.totalLikes,
+        topbarTotDislikes: globalState.dislike.totalDislikes
+    }
+}
+
+export default connect(mapGlobalStatetoProps)(Topbar);
